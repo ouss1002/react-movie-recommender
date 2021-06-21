@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import NavBar from './NavBar';
+import ActualBody from './ActualBody'
+import './index.css';
+import str from "./mv_info_string";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    moviesStarred: new Set([]),
+    currentBody: 'home',
+    moviesInfo: JSON.parse(str),
+  };
+
+  componentDidMount() {
+
+  }
+
+  shouldComponentUpdate() {
+    return true;
+  }
+
+  changeBody = (newBody) => {
+    let lowered = newBody.toLowerCase();
+    if(lowered === this.state.currentBody.toLowerCase()) {
+        return;
+    }
+    else {
+        this.setState((prevState) => ({
+            ...prevState,
+            currentBody: lowered,
+        }));
+    }
+  }
+
+  movieClicked = (id) => {
+    let intid = parseInt(id);
+    this.setState((prevState) => ({
+      ...prevState,
+      moviesStarred: prevState.moviesStarred.delete(intid) ? prevState.moviesStarred : prevState.moviesStarred.add(intid),
+    }));
+  }
+
+  render() {
+    return (
+      <div id="App">
+        <NavBar onChange={this.changeBody} />
+        <ActualBody 
+          screen={this.state.currentBody} 
+          moviesInfo={this.state.moviesInfo} 
+          moviesStarred={this.state.moviesStarred}
+          movieClicked={this.movieClicked}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;

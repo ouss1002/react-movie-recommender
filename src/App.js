@@ -7,7 +7,7 @@ import str from "./mv_info_string";
 class App extends Component {
 
   state = {
-    moviesStarred: new Set([]),
+    moviesStarred: new Set([1,2,3,4,5]),
     currentBody: 'home',
     moviesInfo: JSON.parse(str),
   };

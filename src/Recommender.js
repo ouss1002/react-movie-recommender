@@ -1,19 +1,70 @@
 import React, { Component } from 'react';
 import MovieList from './MovieList';
 import unirest from 'unirest';
+import { Slider } from '@material-ui/core' 
+import { withStyles } from '@material-ui/core/styles';
+
+const PrettoSlider = withStyles({
+    root: {
+      color: '#52af77',
+      height: 8,
+    },
+    thumb: {
+      height: 24,
+      width: 24,
+      backgroundColor: '#6ac045',
+      border: '2px solid #6ac045',
+      marginTop: -8,
+      marginLeft: -12,
+      '&:focus, &:hover, &$active': {
+        boxShadow: 'inherit',
+      },
+    },
+    active: {},
+    track: {
+      height: 8,
+      borderRadius: 4,
+      backgroundColor: '#6ac045',
+    },
+    rail: {
+      height: 8,
+      borderRadius: 4,
+      backgroundColor: '#428E42',
+    },
+  })(Slider);
+
 
 class RecommenderButton extends Component {
+
+    state = {
+        value: 20,
+    }
+
+    handleChange = (event, value) => this.setState({ value });
+
     render() {
         return (
-            <div id="recommender-button">
+            <div id="recommender-button-parent">
                 <button 
                     className="recommender-button apply-transition apply-radius"
                     onClick={() => {this.props.onClick()}}    
-                >Get Recommendations</button>
+                >Get <span className="boldify apply-transition">{this.state.value}</span> Recommendations</button>
+                <div className="number-of-movies">
+                    <PrettoSlider 
+                        id="slider"
+                        step={10}
+                        min={10}
+                        max={100}
+                        value={this.state.value}
+                        onChange={this.handleChange}
+                    />
+                </div>
             </div>
         )
     }
 }
+
+
 
 class Recommender extends Component {
 
@@ -23,8 +74,11 @@ class Recommender extends Component {
 
     getRecommendations = () => {
 
+        let num_recomm = document.querySelector('#slider').querySelector("input").value;
+
         var dataObj = {
-            'ids': [...this.props.moviesStarred]
+            'ids': [...this.props.moviesStarred],
+            'num': num_recomm,
         };
         
         var request = unirest.post(
@@ -46,7 +100,7 @@ class Recommender extends Component {
     render() {
         return (
             <div id="recommender" className="paddit">
-                <RecommenderButton onClick={this.getRecommendations} />
+                <RecommenderButton onClick={this.getRecommendations} value={20} />
                 <MovieList 
                     moviesStarred={this.props.moviesStarred} 
                     selectedMovies={this.state.moviesReturned} 

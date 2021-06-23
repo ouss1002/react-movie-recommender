@@ -4,6 +4,7 @@ import Browse from './Browse';
 import Recommender from './Recommender';
 import Results from './Results';
 import AboutUs from './AboutUs';
+import Liked from './Liked';
 
 class ActualBody extends Component {
 
@@ -24,7 +25,15 @@ class ActualBody extends Component {
             moviesInfo={props.moviesInfo} 
             moviesStarred={props.moviesStarred} 
             movieClicked={props.movieClicked}
-          />}
+          />
+        }
+        {props.screen === 'liked' && 
+          <Liked 
+            moviesInfo={props.moviesInfo} 
+            moviesStarred={props.moviesStarred} 
+            movieClicked={props.movieClicked}
+          />
+        }
         {props.screen === 'results' && <Results />}
         {props.screen === 'about us' && <AboutUs />}
       </div>

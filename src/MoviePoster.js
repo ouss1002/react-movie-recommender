@@ -5,10 +5,11 @@ class MoviePoster extends Component {
     
     render() {
         let props = this.props;
+        console.log(props);
         return (
             <div className="full-poster apply-transition">
                 <div className="movie-poster apply-transition">
-                    <Link to={props.movieId} className={this.props.starred === "starred" ? 
+                    <Link to={"/"+props.movieId} className={this.props.starred === "starred" ? 
                         "link-movie-poster apply-transition poster-starred" : 
                         "link-movie-poster apply-transition"}>
                         <figure className="poster-figure apply-transition">

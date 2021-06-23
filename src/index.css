@@ -104,20 +104,44 @@ code {
   align-items: center;
 }
 
+.number-of-movies {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchbar {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
 .recommender-button {
   background-color: transparent;
   width: auto;
   min-height: 50px;
-  border: none;
+  min-width: 370px;
   text-transform: uppercase;
   color: var(--global-color-primary);
   border: solid var(--global-color-primary) 2px;
   padding: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.recommender-button span {
+  text-transform: uppercase;
+  color: var(--global-color-primary);
 }
 
 .recommender-button:hover {
   background-color: var(--global-color-primary);
+  color: var(--global-color-background);
+  cursor: pointer;
+}
+
+.recommender-button:hover span {
   color: var(--global-color-background);
   cursor: pointer;
 }
@@ -295,6 +319,23 @@ code {
   font-size: 1.1em;
 }
 
+.search-button {
+  background-color: transparent;
+  width: auto;
+  min-height: 50px;
+  text-transform: uppercase;
+  color: var(--global-color-primary);
+  border: solid var(--global-color-primary) 2px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.search-button:hover {
+  background-color: var(--global-color-primary);
+  color: var(--global-color-background);
+  cursor: pointer;
+}
+
 .star-button {
   display: flex;
   flex-flow: column nowrap;
@@ -432,3 +473,14 @@ code {
   sans-serif;
 }
 
+.slider.MuiSlider-valueLabel {
+  color: red;
+}
+
+.boldify {
+  font-weight: bold;
+}
+
+#recommender-button-parent {
+  margin-bottom: 50px;
+}

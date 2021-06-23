@@ -5,14 +5,14 @@ class SearchBar extends Component {
         return (
             <div id="searchbar" className="search-div">
                 <input
-                    type="text"
+                    input="text"
                     id="search-input"
                     placeholder="Search Movies"
-                    className="my-input"
+                    className="my-input apply-transition"
                     spellCheck="False"
                 />
                 <button 
-                    className="recommender-button apply-transition apply-radius search-button"
+                    className="apply-transition apply-radius search-button"
                     onClick={() => this.props.onSendForm(document.getElementById('search-input').value)}
                 >Search</button>
             </div>

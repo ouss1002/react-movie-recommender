@@ -6,13 +6,37 @@ class NavBar extends Component {
         let props = this.props;
         return (
             <div id="navbar">
-                <NavBarButton onChange={props.onChange} text="Home" />
-                <NavBarButton onChange={props.onChange} text="Browse" />
-                <NavBarButton onChange={props.onChange} text="Recommender" />
-                <NavBarButton onChange={props.onChange} text="Liked" />
-                <NavBarButton onChange={props.onChange} text="Profiles" />
+                <NavBarButton 
+                    onChange={props.onChange} 
+                    text="Home"
+                    current={props.currentBody === "home"} 
+                />
+                <NavBarButton 
+                    onChange={props.onChange} 
+                    text="Browse" 
+                    current={props.currentBody === "browse"}
+                />
+                <NavBarButton 
+                    onChange={props.onChange} 
+                    text="Recommender" 
+                    current={props.currentBody === "recommender"}
+                />
+                <NavBarButton 
+                    onChange={props.onChange} 
+                    text="Liked" 
+                    current={props.currentBody === "liked"}
+                />
+                <NavBarButton 
+                    onChange={props.onChange} 
+                    text="Profiles" 
+                    current={props.currentBody === "profiles"}
+                />
                 {/* <NavBarButton onChange={props.onChange} text="Results" /> */}
-                <NavBarButton onChange={props.onChange} text="About Us" />
+                <NavBarButton 
+                    onChange={props.onChange} 
+                    text="About Us" 
+                    current={props.currentBody === "aboutus"}
+                />
             </div>
         )
     }

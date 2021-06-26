@@ -5,7 +5,6 @@ class MoviePoster extends Component {
     
     render() {
         let props = this.props;
-        console.log(props);
         return (
             <div className="full-poster apply-transition">
                 <div className="movie-poster apply-transition">
@@ -34,8 +33,17 @@ class MoviePoster extends Component {
                                     {String.fromCharCode(9733)}
                                 </span>
                                 <h4 className="rating apply-transition">{props.movieInfo['avg_rating']} / 10</h4>
-                                <h4 className="genres apply-transition">{props.movieInfo['genres'][0]}</h4>
-                                <h4 className="genres apply-transition">{props.movieInfo['genres'][1] || props.movieInfo['genres'][0]}</h4>
+                                <h4 className="genres apply-transition">{
+                                    props.movieInfo['genres'][0] === "(no genres listed)" ? 
+                                    "None" : 
+                                    props.movieInfo['genres'][0]
+                                }</h4>
+                                <h4 className="genres apply-transition">{
+                                    props.movieInfo['genres'][0] === "(no genres listed)" ? 
+                                    "None" : 
+                                    props.movieInfo['genres'][1] || 
+                                    props.movieInfo['genres'][0]
+                                }</h4>
                                 <span 
                                     className={"apply-transition view-details " + 
                                         (

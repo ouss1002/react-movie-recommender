@@ -95,6 +95,7 @@ class Recommender extends Component {
                     moviesReturned: res.body['rets'],
                 });
             });
+        
     }
 
     render() {

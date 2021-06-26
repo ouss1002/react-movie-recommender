@@ -531,3 +531,8 @@ code {
   visibility: visible;
   color: var(--global-color-primary);
 }
+
+.keep-border {
+  border: solid;
+  border-color: var(--global-color-primary)!important;
+}

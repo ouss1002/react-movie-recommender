@@ -7,7 +7,11 @@ class NavBarButton extends Component {
 
         return (
             <div 
-                className="navbar-button apply-transition apply-radius"
+                className={
+                    `navbar-button apply-transition apply-radius ${
+                        props.current ? 'keep-border' : ''
+                    }`
+                } 
                 onClick={() => this.props.onChange(props.text)}
                 >
                 {props.text}

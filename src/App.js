@@ -54,7 +54,10 @@ class App extends Component {
   render() {
     return (
       <div id="App">
-        <NavBar onChange={this.changeBody} />
+        <NavBar 
+          onChange={this.changeBody} 
+          currentBody={this.state.currentBody}
+        />
         <ActualBody 
           screen={this.state.currentBody} 
           moviesInfo={this.state.moviesInfo} 

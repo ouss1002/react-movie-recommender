@@ -35,7 +35,7 @@ class NavBar extends Component {
                 <NavBarButton 
                     onChange={props.onChange} 
                     text="About Us" 
-                    current={props.currentBody === "aboutus"}
+                    current={props.currentBody === "about us"}
                 />
             </div>
         )

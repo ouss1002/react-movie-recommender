@@ -5,6 +5,7 @@ import Recommender from './Recommender';
 import Results from './Results';
 import AboutUs from './AboutUs';
 import Liked from './Liked';
+import Profiles from './Profiles'
 
 class ActualBody extends Component {
 
@@ -32,6 +33,13 @@ class ActualBody extends Component {
             moviesInfo={props.moviesInfo} 
             moviesStarred={props.moviesStarred} 
             movieClicked={props.movieClicked}
+          />
+        }
+        {props.screen === 'profiles' && 
+          <Profiles 
+            profiles={props.profiles}
+            changeProfile={props.changeProfile}
+            profileChosen={props.profileChosen}
           />
         }
         {props.screen === 'results' && <Results />}

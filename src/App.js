@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import NavBar from './NavBar';
 import ActualBody from './ActualBody'
 import './index.css';
-import str from "./mv_info_string";
+import { str, profiles } from "./mv_info_string";
 
 class App extends Component {
 
   state = {
-    moviesStarred: new Set([1,2,3,4,5]),
+    moviesStarred: new Set([]),
     currentBody: 'home',
     moviesInfo: JSON.parse(str),
+    profiles: profiles,
+    profileChosen: 'New',
   };
 
   componentDidMount() {
@@ -41,6 +43,14 @@ class App extends Component {
     }));
   }
 
+  changeProfile = (str) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      moviesStarred: new Set(this.state.profiles[str]),
+      profileChosen: str,
+    }));
+  }
+
   render() {
     return (
       <div id="App">
@@ -50,6 +60,9 @@ class App extends Component {
           moviesInfo={this.state.moviesInfo} 
           moviesStarred={this.state.moviesStarred}
           movieClicked={this.movieClicked}
+          profiles={this.state.profiles}
+          changeProfile={this.changeProfile}
+          profileChosen={this.state.profileChosen}
         />
       </div>
     );

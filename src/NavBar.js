@@ -10,6 +10,7 @@ class NavBar extends Component {
                 <NavBarButton onChange={props.onChange} text="Browse" />
                 <NavBarButton onChange={props.onChange} text="Recommender" />
                 <NavBarButton onChange={props.onChange} text="Liked" />
+                <NavBarButton onChange={props.onChange} text="Profiles" />
                 {/* <NavBarButton onChange={props.onChange} text="Results" /> */}
                 <NavBarButton onChange={props.onChange} text="About Us" />
             </div>

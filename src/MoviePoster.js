@@ -9,9 +9,13 @@ class MoviePoster extends Component {
         return (
             <div className="full-poster apply-transition">
                 <div className="movie-poster apply-transition">
-                    <Link to={"/"+props.movieId} className={this.props.starred === "starred" ? 
+                    <Link 
+                        to={"/"} 
+                        className={this.props.starred === "starred" ? 
                         "link-movie-poster apply-transition poster-starred" : 
-                        "link-movie-poster apply-transition"}>
+                        "link-movie-poster apply-transition"
+                        }
+                        onClick={() => props.movieClicked(props.movieId)}>
                         <figure className="poster-figure apply-transition">
                             <img 
                                 className="responsive-img apply-transition"
@@ -40,7 +44,7 @@ class MoviePoster extends Component {
                                             "greeny"
                                         )
                                     }
-                                >View Details</span>
+                                >Watched It</span>
                             </figcaption>
                         </figure>
                     </Link>

@@ -4,8 +4,6 @@ import MovieList from './MovieList';
 class Liked extends Component {
 
     render() {
-        
-        console.log([...this.props.moviesStarred]);
 
         return (
             <div id="liked" className="paddit">

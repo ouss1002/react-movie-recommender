@@ -484,3 +484,50 @@ code {
 #recommender-button-parent {
   margin-bottom: 50px;
 }
+
+.profiles {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+
+  padding: 50px;
+}
+
+.profile {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  margin: 30px;
+}
+
+.profile-button {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 200px;
+  
+  display: flex;
+  justify-content: center;
+
+  border: solid var(--global-color-primary) 2px;
+  color: var(--global-color-primary);
+}
+
+.profile-button:hover{
+  background-color: var(--global-color-primary);
+  color: var(--global-color-background);
+  cursor: pointer;
+}
+
+.profile-label {
+  visibility: hidden;
+  color: var(--global-color-primary);
+}
+
+.profile-label-loaded {
+  visibility: visible;
+  color: var(--global-color-primary);
+}

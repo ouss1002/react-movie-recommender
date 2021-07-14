@@ -40,6 +40,7 @@ class ActualBody extends Component {
             profiles={props.profiles}
             changeProfile={props.changeProfile}
             profileChosen={props.profileChosen}
+            addProfile={props.addProfile}
           />
         }
         {props.screen === 'results' && <Results />}

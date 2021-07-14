@@ -42,21 +42,26 @@ class ListCards extends Component {
 
     render() {
         let people = this.props.people;
+        // return (
+        //     <div className="list-cards">
+        //         {
+        //             people && people.map((person) => (
+        //                 <Card 
+        //                     person={person}
+        //                 />
+        //             ))
+        //         }
+        //         {
+        //             !people && 
+        //             <h1>Nothing</h1>
+        //         }
+        //     </div>
+        // );
         return (
-            <div className="list-cards">
-                {
-                    people && people.map((person) => (
-                        <Card 
-                            person={person}
-                        />
-                    ))
-                }
-                {
-                    !people && 
-                    <h1>Nothing</h1>
-                }
+            <div>
+                About Us
             </div>
-        );
+        )
     }
 
 }

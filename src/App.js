@@ -7,11 +7,11 @@ import { str, profiles } from "./mv_info_string";
 class App extends Component {
 
   state = {
-    moviesStarred: new Set([]),
     currentBody: 'home',
     moviesInfo: JSON.parse(str),
     profiles: profiles,
-    profileChosen: 'New',
+    profileChosen: 'Marvel',
+    moviesStarred: new Set(profiles['Marvel']),
   };
 
   componentDidMount() {
@@ -37,10 +37,12 @@ class App extends Component {
 
   movieClicked = (id) => {
     let intid = parseInt(id);
-    this.setState((prevState) => ({
-      ...prevState,
-      moviesStarred: prevState.moviesStarred.delete(intid) ? prevState.moviesStarred : prevState.moviesStarred.add(intid),
-    }));
+    let s = this.state['profileChosen'];
+
+    let obj = this.state;
+    obj['moviesStarred'] = obj.moviesStarred.delete(intid) ? obj.moviesStarred : obj.moviesStarred.add(intid);
+    obj['profiles'][s] = Array.from(obj['moviesStarred']);
+    this.setState((prevState) => obj);
   }
 
   changeProfile = (str) => {
@@ -49,6 +51,21 @@ class App extends Component {
       moviesStarred: new Set(this.state.profiles[str]),
       profileChosen: str,
     }));
+  }
+
+  addProfile = (str) => {
+    console.log("adding profile " + str);
+    
+    let s = this.state;
+    let prs = s["profiles"];
+    prs[str] = []
+    let obj = {
+      ...this.state,
+      profiles: {
+        ...prs,
+      }
+    }
+    this.setState((prevState) => obj);
   }
 
   render() {
@@ -66,6 +83,7 @@ class App extends Component {
           profiles={this.state.profiles}
           changeProfile={this.changeProfile}
           profileChosen={this.state.profileChosen}
+          addProfile={this.addProfile}
         />
       </div>
     );
